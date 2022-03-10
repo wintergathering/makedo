@@ -21,11 +21,11 @@ func New(r reviewer.BathroomReviewer) BathroomController {
 	}
 }
 
-func (cn *controller) FindAll() []models.Bathroom {
+func (cn controller) FindAll() []models.Bathroom {
 	return cn.review.FindAll()
 }
 
-func (cn *controller) Save(c *gin.Context) models.Bathroom {
+func (cn controller) Save(c *gin.Context) models.Bathroom {
 	var bathroom models.Bathroom
 	c.BindJSON(&bathroom)
 	cn.review.Save(bathroom)
