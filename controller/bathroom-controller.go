@@ -8,7 +8,7 @@ import (
 
 type BathroomController interface {
 	FindAll() []models.Bathroom
-	Save(c *gin.Context) models.Bathroom
+	Save(c *gin.Context) error
 }
 
 type controller struct {
@@ -25,9 +25,12 @@ func (cn controller) FindAll() []models.Bathroom {
 	return cn.review.FindAll()
 }
 
-func (cn controller) Save(c *gin.Context) models.Bathroom {
+func (cn controller) Save(c *gin.Context) error {
 	var bathroom models.Bathroom
-	c.BindJSON(&bathroom)
+	err := c.ShouldBindJSON(&bathroom)
+	if err != nil {
+		return err
+	}
 	cn.review.Save(bathroom)
-	return bathroom
+	return nil
 }
