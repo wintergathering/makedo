@@ -2,7 +2,7 @@ package models
 
 type Bathroom struct {
 	ID     uint   `json:"id"`
-	Place  string `json:"place" binding:"required,min=2"`
+	Place  string `json:"place" binding:"required,min=2" validate:"is-cool"`
 	Rating uint   `json:"rating" binding:"required"`
 	Review string `json:"review"`
 	Author Person `json:"author" binding:"required"`
