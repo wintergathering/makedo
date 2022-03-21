@@ -28,6 +28,10 @@ func main() {
 
 	r := gin.New()
 
+	r.Static("/css", "./templates/css")
+
+	r.LoadHTMLGlob("templates/*.html")
+
 	r.Use(gin.Recovery(), middlewares.Logger(),
 		middlewares.BasicAuth(), gindump.Dump())
 
@@ -47,4 +51,4 @@ func main() {
 	r.Run("localhost:8080")
 }
 
-//RESUME @ ~9:40 OF DATA BINDING VIDEO
+//RESUME @ ~4:00 OF HTML TEMPLATES VIDEO
