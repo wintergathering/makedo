@@ -2,11 +2,25 @@
  - using env:	export GIN_MODE=release
  - using code:	gin.SetMode(gin.ReleaseMode)
 
-[GIN-debug] GET    /bathrooms                --> main.main.func1 (5 handlers)
-[GIN-debug] POST   /bathrooms                --> main.main.func2 (5 handlers)
+[GIN-debug] GET    /css/*filepath            --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (1 handlers)
+[GIN-debug] HEAD   /css/*filepath            --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (1 handlers)
+[GIN-debug] Loaded HTML Templates (4): 
+	- footer.html
+	- header.html
+	- index.html
+	- 
+
+[GIN-debug] GET    /api/bathrooms            --> main.main.func1 (5 handlers)
+[GIN-debug] POST   /api/bathrooms            --> main.main.func2 (5 handlers)
+[GIN-debug] GET    /view/bathrooms           --> github.com/wintergathering/makedo/controller.BathroomController.ShowAll-fm (5 handlers)
 [GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
 Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
 [GIN-debug] Listening and serving HTTP on localhost:8080
-127.0.0.1 - [21 Mar 22 06:42 EDT] GET /bathrooms 200 3.018ms 
-127.0.0.1 - [21 Mar 22 06:43 EDT] POST /bathrooms 400 4.758ms 
-127.0.0.1 - [21 Mar 22 06:43 EDT] POST /bathrooms 200 2.2759ms 
+127.0.0.1 - [22 Mar 22 06:57 EDT] POST /api/bathrooms 200 4.4744ms 
+127.0.0.1 - [22 Mar 22 06:58 EDT] POST /api/bathrooms 200 3.4335ms 
+127.0.0.1 - [22 Mar 22 06:59 EDT] GET / 401 714.5µs 
+127.0.0.1 - [22 Mar 22 06:59 EDT] GET / 404 3.3946ms 
+127.0.0.1 - [22 Mar 22 06:59 EDT] GET /favicon.ico 404 3.5936ms 
+127.0.0.1 - [22 Mar 22 06:59 EDT] GET /view/bathrooms 200 5.06ms 
+127.0.0.1 - [22 Mar 22 07:01 EDT] POST /api/bathrooms 200 2.6683ms 
+127.0.0.1 - [22 Mar 22 07:01 EDT] GET /view/bathrooms 200 3.704ms 

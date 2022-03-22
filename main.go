@@ -35,20 +35,26 @@ func main() {
 	r.Use(gin.Recovery(), middlewares.Logger(),
 		middlewares.BasicAuth(), gindump.Dump())
 
-	r.GET("/bathrooms", func(c *gin.Context) {
-		c.JSON(200, bathroomController.FindAll())
-	})
+	apiRoutes := r.Group("/api")
+	{
+		apiRoutes.GET("/bathrooms", func(c *gin.Context) {
+			c.JSON(200, bathroomController.FindAll())
+		})
 
-	r.POST("/bathrooms", func(c *gin.Context) {
-		err := bathroomController.Save(c)
-		if err != nil {
-			c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
-		} else {
-			c.JSON(http.StatusOK, gin.H{"message": "Review is valid"})
-		}
-	})
+		apiRoutes.POST("/bathrooms", func(c *gin.Context) {
+			err := bathroomController.Save(c)
+			if err != nil {
+				c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+			} else {
+				c.JSON(http.StatusOK, gin.H{"message": "Review is valid"})
+			}
+		})
+	}
+
+	viewRoutes := r.Group("/view")
+	{
+		viewRoutes.GET("/bathrooms", bathroomController.ShowAll)
+	}
 
 	r.Run("localhost:8080")
 }
-
-//RESUME @ ~4:00 OF HTML TEMPLATES VIDEO
