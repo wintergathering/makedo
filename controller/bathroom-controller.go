@@ -4,7 +4,6 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
-	"github.com/go-playground/validator"
 	"github.com/wintergathering/makedo/models"
 	"github.com/wintergathering/makedo/reviewer"
 )
@@ -18,8 +17,6 @@ type BathroomController interface {
 type controller struct {
 	review reviewer.BathroomReviewer
 }
-
-var validate *validator.Validate
 
 func New(r reviewer.BathroomReviewer) BathroomController {
 	return &controller{
@@ -37,10 +34,6 @@ func (cn *controller) Save(c *gin.Context) error {
 	if err != nil {
 		return err
 	}
-	// err = validate.Struct(bathroom)
-	// if err != nil {
-	// 	return err
-	// }
 	cn.review.Save(bathroom)
 	return nil
 }
