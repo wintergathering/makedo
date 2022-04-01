@@ -55,7 +55,7 @@ func main() {
 	{
 		viewRoutes.GET("/bathrooms", bathroomController.ShowAll)
 
-		viewRoutes.GET("/bathrooms/:place", //add view method here)
+		viewRoutes.GET("/bathrooms/:id", bathroomController.ShowByID)
 	}
 
 	r.Run("localhost:8080")

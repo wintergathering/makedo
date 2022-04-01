@@ -4,18 +4,19 @@
 
 [GIN-debug] GET    /css/*filepath            --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (1 handlers)
 [GIN-debug] HEAD   /css/*filepath            --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (1 handlers)
-[GIN-debug] Loaded HTML Templates (4): 
+[GIN-debug] Loaded HTML Templates (6): 
+	- header.html
+	- id_template.html
+	- index.html
+	- not_found.html
 	- 
 	- footer.html
-	- header.html
-	- index.html
 
 [GIN-debug] GET    /api/bathrooms            --> main.main.func1 (5 handlers)
 [GIN-debug] POST   /api/bathrooms            --> main.main.func2 (5 handlers)
 [GIN-debug] GET    /view/bathrooms           --> github.com/wintergathering/makedo/controller.BathroomController.ShowAll-fm (5 handlers)
+[GIN-debug] GET    /view/bathrooms/:id       --> github.com/wintergathering/makedo/controller.BathroomController.ShowByID-fm (5 handlers)
 [GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
 Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
 [GIN-debug] Listening and serving HTTP on localhost:8080
-127.0.0.1 - [25 Mar 22 06:51 EDT] POST /api/bathrooms 200 3.086ms 
-127.0.0.1 - [25 Mar 22 06:51 EDT] POST /api/bathrooms 400 5.3709ms 
-127.0.0.1 - [25 Mar 22 06:51 EDT] POST /api/bathrooms 200 3.1692ms 
+127.0.0.1 - [31 Mar 22 20:13 EDT] GET /view/bathrooms/3 404 3.5634ms 

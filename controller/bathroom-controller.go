@@ -1,9 +1,7 @@
 package controller
 
 import (
-	"log"
 	"net/http"
-	"strconv"
 
 	"github.com/gin-gonic/gin"
 	"github.com/wintergathering/makedo/models"
@@ -54,27 +52,18 @@ func (cn *controller) ShowAll(c *gin.Context) {
 func (cn *controller) ShowByID(c *gin.Context) {
 
 	id := c.Param("id")
-	z, err := strconv.Atoi(id)
-	if err != nil {
-		log.Fatal("couldn't convert the id for some reason?") //not sure what's going on with the error here
-	}
-
-	u := uint(z)
 
 	brs := cn.review.FindAll()
 
 	//there's likely a better way to do this, esp with a DB
 	//see restaurant app maybe
 	for _, a := range brs {
-		if a.ID == u {
-			data := gin.H{
-				"title":    "Placeholder",
-				"bathroom": a,
-			}
-			c.HTML(http.StatusOK, "placeholder.html", data)
-			//need to make a template to render here
+		if a.ID == id {
+			c.HTML(http.StatusOK, "id_template.html", a)
+			//c.IndentedJSON(http.StatusOK, a)
 			return
+			//try debugging this with c.JSON if the page doesn't seem to be loading correctly
 		}
 	}
-	c.HTML(http.StatusNotFound, "notfoundplaceholder.html", gin.H{"message": "bathroom not found"})
+	c.JSON(http.StatusNotFound, gin.H{"message": "bathroom not found"})
 }

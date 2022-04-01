@@ -1,7 +1,7 @@
 package models
 
 type Bathroom struct {
-	ID     uint   `json:"id"`
+	ID     string `json:"id"`
 	Place  string `json:"place" binding:"required,min=2"`
 	Rating uint   `json:"rating" binding:"required"`
 	Review string `json:"review"`
